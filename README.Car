@@ -1,0 +1,107 @@
+
+// Scanner para ingresar datos
+import java.util.Scanner;
+
+
+public class CalculadoraMatematica {
+    
+    // Declarar el scanner para que el programa sea interactivo
+    Scanner scanner = new Scanner(System.in);
+    
+    // Atributos
+
+    private double numero1;
+
+    private double numero2;
+    
+   // Metodos de operaciones aritmeticas
+    
+    public double sumar(double numero1, double numero2) {
+    return numero1 + numero2;
+}
+
+public double restar(double numero1, double numero2) {
+    return numero1 - numero2;
+}
+
+public double multiplicar(double numero1, double numero2) {
+    return numero1 * numero2;
+}
+    
+    public double division(double numero1, double numero2) {
+          if (numero2 == 0 || numero1 == 0) {
+        throw new ArithmeticException("No se puede dividir entre cero.");
+    }
+        return numero1 / numero2;
+    }
+    
+    //Menu donde entraremos los datos correspondienetes - Elegir opcion
+        
+        
+        
+        
+         public void menu() {
+      
+        System.out.println("\n===== CALCULADORA MATEMÁTICA =====");
+        System.out.println("\n1.  Ingresar números: ");
+        numero1 = scanner.nextDouble();
+        numero2 = scanner.nextDouble();
+        System.out.println("\n2.  Sumar ");
+        System.out.println("\n3.  Restar");
+        System.out.println("\n4.  Multiplicar ");
+        System.out.println("\n5.  Dividir");
+        System.out.println("\n0.  Salir");
+        System.out.println("\n ==================================");
+        System.out.println("\nSeleccione una opción: ");
+        int opcion = scanner.nextInt();
+       
+        
+        // switch para que evalue la opcion elegida
+        switch (opcion){
+            case 0: System.out.println("Saliendo...");
+            break;
+            case 2:  System.out.println("Resultado: " + sumar(numero1, numero2));
+        break;
+            case 3: System.out.println("Resultado: " + restar(numero1, numero2));
+        break;
+            case 4: System.out.println("Resultado: " + multiplicar(numero1, numero2));
+        break;
+            case 5:   try { System.out.println("Resultado: " + division(numero1, numero2));
+            } catch (ArithmeticException e) {
+        System.out.println("Error: " + e.getMessage());
+            } 
+            break;
+        
+        
+            case 6:
+            default:System.out.println("Opcion no valida");
+        
+           
+               
+        }
+        
+        
+         }
+        
+        
+   // para retornar valores, Usamos Get debido a que los atributos estan encapsulados"private"
+    public double getNumero1() {
+        return numero1;
+    }
+
+    public void setNumero1(double numero1) {
+        this.numero1 = numero1;
+    }
+
+    public double getNumero2() {
+        return numero2;
+    }
+
+    public void setNumero2(double numero2) {
+        this.numero2 = numero2;
+    }
+    
+    
+    
+}
+   
