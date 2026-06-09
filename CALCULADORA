@@ -1,0 +1,187 @@
+import java.util.Scanner;
+public class CalculadoraMatematica {
+
+    // Scanner para entrada de datos
+    Scanner scanner = new Scanner(System.in);
+
+    // Atributos privados
+    private double numero1;
+    private double numero2;
+
+    /**
+     * Constructor por defecto.
+     */
+    public CalculadoraMatematica() {
+        numero1 = 0;
+        numero2 = 0;
+    }
+
+    /**
+     * Realiza la suma de dos números.
+     *
+     * @param numero1 primer número
+     * @param numero2 segundo número
+     * @return resultado de la suma
+     */
+    public double sumar(double numero1, double numero2) {
+        return numero1 + numero2;
+    }
+
+    /**
+     * Realiza la resta de dos números.
+     *
+     * @param numero1 primer número
+     * @param numero2 segundo número
+     * @return resultado de la resta
+     */
+    public double restar(double numero1, double numero2) {
+        return numero1 - numero2;
+    }
+
+    /**
+     * Realiza la multiplicación de dos números.
+     *
+     * @param numero1 primer número
+     * @param numero2 segundo número
+     * @return resultado de la multiplicación
+     */
+    public double multiplicar(double numero1, double numero2) {
+        return numero1 * numero2;
+    }
+
+    /**
+     * Realiza la división de dos números.
+     *
+     * @param numero1 dividendo
+     * @param numero2 divisor
+     * @return resultado de la división
+     * @throws ArithmeticException si el divisor es cero
+     */
+    public double division(double numero1, double numero2) {
+
+        if (numero2 == 0) {
+            throw new ArithmeticException("No se puede dividir entre cero.");
+        }
+
+        return numero1 / numero2;
+    }
+
+    /**
+     * Muestra el menú principal de la calculadora.
+     */
+    public void menu() {
+
+        int opcion;
+
+        do {
+
+            System.out.println("\n===== CALCULADORA MATEMÁTICA =====");
+            System.out.println("1. Ingresar números");
+            System.out.println("2. Sumar");
+            System.out.println("3. Restar");
+            System.out.println("4. Multiplicar");
+            System.out.println("5. Dividir");
+            System.out.println("0. Salir");
+            System.out.println("==================================");
+            System.out.print("Seleccione una opción: ");
+
+            opcion = scanner.nextInt();
+
+            switch (opcion) {
+
+                case 1:
+
+                    System.out.print("Ingrese el primer número: ");
+                    setNumero1(scanner.nextDouble());
+
+                    System.out.print("Ingrese el segundo número: ");
+                    setNumero2(scanner.nextDouble());
+
+                    System.out.println("Números ingresados correctamente.");
+                    break;
+
+                case 2:
+
+                    System.out.println("Resultado de la suma: "
+                            + sumar(getNumero1(), getNumero2()));
+                    break;
+
+                case 3:
+
+                    System.out.println("Resultado de la resta: "
+                            + restar(getNumero1(), getNumero2()));
+                    break;
+
+                case 4:
+
+                    System.out.println("Resultado de la multiplicación: "
+                            + multiplicar(getNumero1(), getNumero2()));
+                    break;
+
+                case 5:
+
+                    try {
+
+                        double resultado =
+                                division(getNumero1(), getNumero2());
+
+                        System.out.println("Resultado de la división: "
+                                + resultado);
+
+                    } catch (ArithmeticException e) {
+
+                        System.out.println("Error: "
+                                + e.getMessage());
+                    }
+
+                    break;
+
+                case 0:
+
+                    System.out.println("¡Gracias por usar la calculadora!");
+                    break;
+
+                default:
+
+                    System.out.println("Opción no válida.");
+            }
+
+        } while (opcion != 0);
+    }
+
+    /**
+     * Obtiene el primer número.
+     *
+     * @return numero1
+     */
+    public double getNumero1() {
+        return numero1;
+    }
+
+    /**
+     * Establece el primer número.
+     *
+     * @param numero1 valor a asignar
+     */
+    public void setNumero1(double numero1) {
+        this.numero1 = numero1;
+    }
+
+    /**
+     * Obtiene el segundo número.
+     *
+     * @return numero2
+     */
+    public double getNumero2() {
+        return numero2;
+    }
+
+    /**
+     * Establece el segundo número.
+     *
+     * @param numero2 valor a asignar
+     */
+    public void setNumero2(double numero2) {
+        this.numero2 = numero2;
+    }
+}
